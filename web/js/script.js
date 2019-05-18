@@ -129,7 +129,6 @@ function addCoupon(product, shop, discountedPrice, originalPrice) {
     xhttp.send(JSON.stringify(coupon));
 }
 
-
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
     var formData = new FormData(e.target);
@@ -139,6 +138,9 @@ function processForm(e) {
     var discountedPrice = formData.get("discounted-price");
     var originalPrice = formData.get("original-price");
     addCoupon(product, shop, discountedPrice, originalPrice);
+
+    var form = document.getElementById("add-coupon-form");
+    form.reset();
 
     // Obavezno vratiti false da bi se pregazilo default-no ponasanje prilikom submit-a.
     return false;

@@ -10,6 +10,17 @@ public class CouponDto {
     private double originalPrice;
     private String shop;
 
+    public CouponDto() {
+
+    }
+
+    public CouponDto(Coupon coupon) {
+        this.id = coupon.getId();
+        this.product = coupon.getProduct();
+        this.discountedPrice = coupon.getDiscountedPrice();
+        this.originalPrice = coupon.getOriginalPrice();
+        this.shop = coupon.getShop().getName();
+    }
 
     public long getId() {
         return id;

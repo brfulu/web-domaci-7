@@ -13,10 +13,7 @@ public class ShopService {
         List<ShopDto> shopDtos = new ArrayList<>();
         List<Shop> shops = ShopRepository.getShops();
         for (Shop shop : shops) {
-            ShopDto shopDto = new ShopDto();
-            shopDto.setId(shop.getId());
-            shopDto.setName(shop.getName());
-
+            ShopDto shopDto = new ShopDto(shop);
             shopDtos.add(shopDto);
         }
         return shopDtos;

@@ -9,6 +9,21 @@ public class Coupon {
     private double originalPrice;
     private Shop shop;
 
+    public Coupon(CouponDto couponDto) {
+        this.product = couponDto.getProduct();
+        this.discountedPrice = couponDto.getDiscountedPrice();
+        this.originalPrice = couponDto.getOriginalPrice();
+        this.shop = new Shop();
+        this.shop.setName(couponDto.getShop());
+    }
+
+    public Coupon(CouponRecord couponRecord) {
+        this.id = couponRecord.getId();
+        this.product = couponRecord.getProduct();
+        this.discountedPrice = couponRecord.getDiscountedPrice();
+        this.originalPrice = couponRecord.getOriginalPrice();
+    }
+
     public Coupon() {
 
     }

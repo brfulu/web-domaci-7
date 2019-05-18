@@ -8,6 +8,11 @@ public class ShopDto {
 
     }
 
+    public ShopDto(Shop shop) {
+        this.id = shop.getId();
+        this.name = shop.getName();
+    }
+
     public long getId() {
         return id;
     }

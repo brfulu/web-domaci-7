@@ -1,10 +1,8 @@
 package fulu.app.coupon;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import fulu.app.shop.Shop;
 import fulu.app.shop.ShopRepository;
 
@@ -26,10 +24,7 @@ public class CouponRepository {
     public synchronized static List<Coupon> getCoupons() {
         List<Coupon> coupons = new ArrayList<>();
         for (CouponRecord couponRecord : COUPON_RECORDS) {
-            Coupon coupon = new Coupon(couponRecord.getId());
-            coupon.setProduct(couponRecord.getProduct());
-            coupon.setDiscountedPrice(couponRecord.getDiscountedPrice());
-            coupon.setOriginalPrice(couponRecord.getOriginalPrice());
+            Coupon coupon = new Coupon(couponRecord);
 
             Shop shop = ShopRepository.getShopById(couponRecord.getShopId());
             coupon.setShop(shop);
