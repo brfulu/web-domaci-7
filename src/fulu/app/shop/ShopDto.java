@@ -1,16 +1,11 @@
 package fulu.app.shop;
 
-public class Shop {
+public class ShopDto {
     private long id;
     private String name;
 
-    public Shop() {
+    public ShopDto() {
 
-    }
-
-    public Shop(long id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public long getId() {

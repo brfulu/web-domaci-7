@@ -1,13 +1,14 @@
 package fulu.app.coupon;
 
 import fulu.app.shop.Shop;
+import fulu.app.shop.ShopDto;
 
 public class CouponDto {
     private long id;
     private String product;
     private double discountedPrice;
     private double originalPrice;
-    private Shop shop;
+    private String shop;
 
 
     public long getId() {
@@ -42,11 +43,11 @@ public class CouponDto {
         this.originalPrice = originalPrice;
     }
 
-    public Shop getShop() {
+    public String getShop() {
         return shop;
     }
 
-    public void setShop(Shop shop) {
+    public void setShop(String shop) {
         this.shop = shop;
     }
 }

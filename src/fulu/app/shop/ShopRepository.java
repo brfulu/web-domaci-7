@@ -2,7 +2,6 @@ package fulu.app.shop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fulu.app.util.FileUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,6 +40,15 @@ public class ShopRepository {
     public synchronized static Shop getShopById(long id) {
         for (ShopRecord record : SHOP_RECORDS) {
             if (record.getId() == id) {
+                return new Shop(record.getId(), record.getName());
+            }
+        }
+        return null;
+    }
+
+    public synchronized static Shop getShopByName(String name) {
+        for (ShopRecord record : SHOP_RECORDS) {
+            if (record.getName().equals(name)) {
                 return new Shop(record.getId(), record.getName());
             }
         }

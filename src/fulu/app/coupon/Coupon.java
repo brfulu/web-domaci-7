@@ -9,6 +9,10 @@ public class Coupon {
     private double originalPrice;
     private Shop shop;
 
+    public Coupon() {
+
+    }
+
     public Coupon(long id) {
         this.id = id;
     }

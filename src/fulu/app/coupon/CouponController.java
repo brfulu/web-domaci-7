@@ -1,9 +1,7 @@
 package fulu.app.coupon;
 
 import javax.servlet.ServletContext;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -18,7 +16,21 @@ public class CouponController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CouponDto> getCoupons(@Context ServletContext ctx) {
+    public List<CouponDto> getCoupons() {
         return couponService.getCoupons();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public CouponDto addCoupon(CouponDto couponDto) {
+        return couponService.addCoupon(couponDto);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean deleteCoupon(@PathParam("id") int id) {
+        return couponService.deleteCoupon(id);
     }
 }

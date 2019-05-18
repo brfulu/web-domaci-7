@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import fulu.app.shop.Shop;
 import fulu.app.shop.ShopRepository;
 
 public class CouponRepository {
     private static List<CouponRecord> COUPON_RECORDS;
+    private static int ID_COUNTER = 2;
 
     static {
         COUPON_RECORDS = fillCouponRecords();
@@ -38,4 +40,22 @@ public class CouponRepository {
         return coupons;
     }
 
+    public synchronized static Coupon addCoupon(Coupon coupon) {
+        coupon.setId(++ID_COUNTER);
+        String shopName = coupon.getShop().getName();
+
+        Shop shop = ShopRepository.getShopByName(shopName);
+        coupon.setShop(shop);
+
+        CouponRecord couponRecord = new CouponRecord(coupon.getId(), coupon.getProduct(), coupon.getDiscountedPrice(),
+                coupon.getOriginalPrice(), coupon.getShop().getId());
+
+        COUPON_RECORDS.add(couponRecord);
+
+        return coupon;
+    }
+
+    public static boolean deleteCoupon(long id) {
+        return COUPON_RECORDS.removeIf(record -> record.getId() == id);
+    }
 }
