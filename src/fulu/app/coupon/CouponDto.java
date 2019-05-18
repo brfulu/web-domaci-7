@@ -2,16 +2,13 @@ package fulu.app.coupon;
 
 import fulu.app.shop.Shop;
 
-public class Coupon {
+public class CouponDto {
     private long id;
     private String product;
     private double discountedPrice;
     private double originalPrice;
     private Shop shop;
 
-    public Coupon(long id) {
-        this.id = id;
-    }
 
     public long getId() {
         return id;

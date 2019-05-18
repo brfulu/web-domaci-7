@@ -1,10 +1,10 @@
 package fulu.app.shop;
 
-public class Shop {
+public class ShopRecord {
     private long id;
     private String name;
 
-    public Shop(long id, String name) {
+    public ShopRecord(long id, String name) {
         this.id = id;
         this.name = name;
     }

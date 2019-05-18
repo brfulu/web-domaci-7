@@ -4,7 +4,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("/user")
+@ApplicationPath("/rest")
 public class RestApp extends ResourceConfig {
 
     public RestApp() {
