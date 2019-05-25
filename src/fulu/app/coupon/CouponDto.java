@@ -1,14 +1,12 @@
 package fulu.app.coupon;
 
-import fulu.app.shop.Shop;
-import fulu.app.shop.ShopDto;
-
 public class CouponDto {
     private long id;
     private String product;
     private double discountedPrice;
     private double originalPrice;
     private String shop;
+    private double discountPercentage;
 
     public CouponDto() {
 
@@ -20,6 +18,7 @@ public class CouponDto {
         this.discountedPrice = coupon.getDiscountedPrice();
         this.originalPrice = coupon.getOriginalPrice();
         this.shop = coupon.getShop().getName();
+        this.discountPercentage = (1.0 - discountedPrice / originalPrice) * 100;
     }
 
     public long getId() {
@@ -60,5 +59,13 @@ public class CouponDto {
 
     public void setShop(String shop) {
         this.shop = shop;
+    }
+
+    public double getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(double discountPercentage) {
+        this.discountPercentage = discountPercentage;
     }
 }

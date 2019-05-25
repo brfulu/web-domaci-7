@@ -1,9 +1,5 @@
 package fulu.app.shop;
 
-import fulu.app.coupon.Coupon;
-import fulu.app.coupon.CouponDto;
-import fulu.app.coupon.CouponRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 

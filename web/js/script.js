@@ -49,9 +49,7 @@ function loadCoupons() {
                 tdOriginalPrice.innerHTML = result[i].originalPrice + " din";
 
                 var tdDiscountPercentage = document.createElement("td");
-                var discountPercentage = (1 - (result[i].discountedPrice / result[i].originalPrice)) * 100;
-                discountPercentage = discountPercentage.toFixed(2);
-                tdDiscountPercentage.innerHTML = discountPercentage + " %";
+                tdDiscountPercentage.innerHTML = result[i].discountPercentage.toFixed(2) + " %";
 
                 var tdDeleteBtn = document.createElement("td");
                 var deleteBtn = document.createElement("input");
@@ -77,6 +75,7 @@ function loadCoupons() {
     };
 
     xhttp.open("GET", "/rest/coupons", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send();
 }
 
@@ -117,15 +116,15 @@ function addCoupon(product, shop, discountedPrice, originalPrice) {
         }
     };
 
-    xhttp.open("POST", "/rest/coupons", true);
-    xhttp.setRequestHeader("Content-Type", "application/json");
-
     var coupon = {
         product: product,
         shop: shop,
         discountedPrice: discountedPrice,
         originalPrice: originalPrice
     }
+
+    xhttp.open("POST", "/rest/coupons", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(coupon));
 }
 
